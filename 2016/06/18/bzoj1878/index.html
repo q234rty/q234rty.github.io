@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【BZOJ1878】【SDOI2009】HH的项链 | q234rty&#39;s Blog</title>
+  <meta name="author" content="q234rty">
+  
+  <meta name="description" content="离线处理+树状数组即可。">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="【BZOJ1878】【SDOI2009】HH的项链"/>
+  <meta property="og:site_name" content="q234rty&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="q234rty&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">q234rty&#39;s Blog</a>
+  </h1>
+  <p class="site-description"></p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>【BZOJ1878】【SDOI2009】HH的项链</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/06/18/bzoj1878/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-18T15:41:38.839Z">
+          2016-06-18
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>&#x79BB;&#x7EBF;&#x5904;&#x7406;+&#x6811;&#x72B6;&#x6570;&#x7EC4;&#x5373;&#x53EF;&#x3002;</p>
+<a id="more"></a>
+<p>&#x5C06;&#x8BE2;&#x95EE;&#x6309;&#x7167;&#x5DE6;&#x7AEF;&#x70B9;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x6392;&#x5E8F;,&#x4E4B;&#x540E;&#x4ECE;&#x5DE6;&#x5230;&#x53F3;&#x626B;&#x4E00;&#x904D;,$t[i]$&#x8868;&#x793A;&#x8D1D;&#x58F3;$i$&#x662F;&#x5426;&#x662F;&#x8FD8;&#x6CA1;&#x626B;&#x8FC7;&#x7684;&#x8D1D;&#x58F3;&#x4E2D;&#x8FD9;&#x79CD;&#x989C;&#x8272;&#x7684;&#x8D1D;&#x58F3;&#x7684;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;.</p>
+<p>&#x9884;&#x5904;&#x7406;$next[i]$&#x8868;&#x793A;$a[i]$&#x8FD9;&#x79CD;&#x989C;&#x8272;&#x7684;&#x8D1D;&#x58F3;&#x4E0B;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#x7684;&#x5730;&#x65B9;.&#x4E00;&#x5F00;&#x59CB;&#x5148;&#x628A;&#x6BCF;&#x4E2A;&#x989C;&#x8272;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#x7684;&#x8D1D;&#x58F3;$i$&#x7684;$t[i]$&#x52A0;&#x4E0A;1.&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x626B;&#x8FC7;&#x7684;&#x8D1D;&#x58F3;,&#x7ED9;$t[next[i]]$&#x52A0;&#x4E0A;1.</p>
+<p>&#x7528;&#x6811;&#x72B6;&#x6570;&#x7EC4;&#x7EF4;&#x62A4;$t[i]$,&#x8BE2;&#x95EE;&#x7684;&#x7B54;&#x6848;&#x5C31;&#x662F;$\sum\limits_{i=l}^r{t[i]}$.</p>
+<p>&#x4E8E;&#x662F;&#x8FD9;&#x9898;&#x5C31;&#x505A;&#x5B8C;&#x5566;.</p>
+<p>&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;$O((m+n)\log n)$.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXSIZE=<span class="number">30000020</span>;</span><br><span class="line"><span class="keyword">int</span> bufpos;</span><br><span class="line"><span class="keyword">char</span> buf[MAXSIZE];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">        freopen(<span class="string">&quot;1878.txt&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// LOCAL</span></span></span><br><span class="line">    buf[fread(buf,<span class="number">1</span>,MAXSIZE,<span class="built_in">stdin</span>)]=<span class="string">&apos;\0&apos;</span>;</span><br><span class="line">    bufpos=<span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">readint</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">bool</span> isneg;</span><br><span class="line">    <span class="keyword">int</span> val=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;!<span class="built_in">isdigit</span>(buf[bufpos]) &amp;&amp; buf[bufpos]!=<span class="string">&apos;-&apos;</span>;bufpos++);</span><br><span class="line">    bufpos+=(isneg=(buf[bufpos]==<span class="string">&apos;-&apos;</span>))?<span class="number">1</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(buf[bufpos]);bufpos++)</span><br><span class="line">        val=val*<span class="number">10</span>+buf[bufpos]-<span class="string">&apos;0&apos;</span>;</span><br><span class="line">    <span class="keyword">return</span> isneg?-val:val;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">struct</span> bit{</span><br><span class="line">    <span class="keyword">int</span> t[<span class="number">50001</span>];</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>{</span><br><span class="line">        <span class="keyword">this</span>-&gt;n=n;</span><br><span class="line">        <span class="built_in">memset</span>(t,<span class="number">0</span>,<span class="keyword">sizeof</span>(t));</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">        <span class="keyword">return</span> (x&amp;(-x));</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">        <span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&gt;<span class="number">0</span>;i-=lowbit(i))</span><br><span class="line">            ret+=t[i];</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> v)</span></span>{</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=p;i&lt;=n;i+=lowbit(i))</span><br><span class="line">            t[i]+=v;</span><br><span class="line">        <span class="comment">//for(int i=1;i&lt;=n;i++)</span></span><br><span class="line">        	<span class="comment">//printf(&quot;%d &quot;,t[i]);</span></span><br><span class="line">    }</span><br><span class="line">}t;</span><br><span class="line"><span class="keyword">int</span> nxt[<span class="number">50001</span>];</span><br><span class="line"><span class="keyword">int</span> now[<span class="number">1000001</span>];</span><br><span class="line"><span class="keyword">bool</span> app[<span class="number">1000001</span>];</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">50001</span>];</span><br><span class="line"><span class="keyword">struct</span> query{</span><br><span class="line">    <span class="keyword">int</span> l,r,p;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> query&amp; rhs)<span class="keyword">const</span>{</span><br><span class="line">        <span class="keyword">return</span> l&lt;rhs.l;</span><br><span class="line">    }</span><br><span class="line">};</span><br><span class="line">query q[<span class="number">200001</span>];</span><br><span class="line"><span class="keyword">int</span> ans[<span class="number">200001</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">int</span> n=readint();</span><br><span class="line">    t.init(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        a[i]=readint();</span><br><span class="line">    <span class="keyword">int</span> m=readint();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++){</span><br><span class="line">        q[i].l=readint(),q[i].r=readint(),q[i].p=i;</span><br><span class="line">    }</span><br><span class="line">    sort(q+<span class="number">1</span>,q+m+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">memset</span>(now,<span class="number">-1</span>,<span class="keyword">sizeof</span>(now));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--){</span><br><span class="line">        nxt[i]=now[a[i]];</span><br><span class="line">        now[a[i]]=i;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="keyword">if</span> (!app[a[i]])</span><br><span class="line">            t.add(i,<span class="number">1</span>),app[a[i]]=<span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">    q[<span class="number">0</span>].l=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++){</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=q[i<span class="number">-1</span>].l;j&lt;q[i].l;j++)</span><br><span class="line">            <span class="keyword">if</span> (nxt[j]!=<span class="number">-1</span>)</span><br><span class="line">                t.add(nxt[j],<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        ans[q[i].p]=t.sum(q[i].r)-t.sum(q[i].l<span class="number">-1</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans[i]);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'q234rtysblog';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 q234rty
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
